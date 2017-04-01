@@ -6,3 +6,5 @@ Dependencies:
 
 * Yarn
 * Docker
+* Maven
+* Java 8

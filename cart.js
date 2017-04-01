@@ -3,9 +3,9 @@ const Build = require('./cli/build.js')
 const Up = require('./cli/up.js')
 
 doc = `Usage:
-    cart go [(web|db|zoo)]
-    cart build [(web|db|zoo)]
-    cart up [(web|db|zoo)]
+    cart go [(web|db|zoo|cart)]
+    cart build [(web|db|zoo|cart)]
+    cart up [(web|db|zoo|cart)]
     cart -h | --help | --version
 `
 
