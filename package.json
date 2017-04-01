@@ -1,0 +1,13 @@
+{
+  "name": "cart",
+  "version": "1.0.0",
+  "main": "cart.js",
+  "repository": "https://github.com/mindlapse/shoppingcart.git",
+  "author": "mindlapse@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "docopt": "^0.6.2",
+    "executive": "^1.2.7",
+    "in-folder": "^1.0.3"
+  }
+}
