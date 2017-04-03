@@ -16,10 +16,21 @@ module.exports = class Build {
     }
 
     static cart() {
-        return inFolder("svc/cart-svc", () => exec([
+        return inFolder("svc/cart-domain", () => exec([
             "mvn clean package",
             "docker build -t svc-cart ."
-        ]))
+        ], {strict:true}))
+    }
+
+    static zuul() {
+        return inFolder("zuul", () => exec([
+            "mvn clean package",
+            "docker build -t zuul ."
+        ], {strict:true}))
+    }
+
+    static redis() {
+        return exec("docker pull redis:3.2.8-alpine")
     }
 
     static go(opts) {
@@ -35,13 +46,22 @@ module.exports = class Build {
 
         } else if (opts.cart) {
             return Build.cart();
+
+        } else if (opts.zuul) {
+            return Build.zuul();
+
+        } else if (opts.redis) {
+            return Build.redis();
+
         } else {
 
             return Promise.all([
                 Build.web(),
                 Build.db(),
                 Build.zoo(),
-                Build.cart()
+                Build.cart(),
+                Build.zuul(),
+                Build.redis()
             ])
 
         }

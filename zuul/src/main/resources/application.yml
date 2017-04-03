@@ -1,0 +1,14 @@
+spring:
+  redis:
+    host: redis
+    password: 3RgN4ThM
+    port: 6379
+
+zuul:
+  routes:
+    products:
+      path: /products/**
+      url: http://products:8080/products
+    cart:
+      path: /cart/**
+      url: http://cart:8080/cart

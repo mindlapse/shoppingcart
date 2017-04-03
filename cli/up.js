@@ -19,6 +19,13 @@ module.exports = class Up {
         ])
     }
 
+    static redis() {
+        return exec([
+            "docker rm -f redis",
+            "docker run -p 6379:6379 -m " + MEM_LIMIT_SMALL + " -d --name redis redis:3.2.8-alpine redis-server --requirepass 3RgN4ThM"
+        ])
+    }
+
     static zoo() {
         return inFolder("zoo", () => exec(
             "docker-compose up -d"
@@ -28,7 +35,14 @@ module.exports = class Up {
     static cart() {
         return exec([
             "docker rm -f svc-cart",
-            "docker run -p 7100:8080 -m " + MEM_LIMIT_BIG + " -d --name svc-cart svc-cart"
+            "docker run -p 7100:8080 -m " + MEM_LIMIT_BIG + " -d --link redis --name svc-cart svc-cart"
+        ])
+    }
+
+    static zuul() {
+        return exec([
+            "docker rm -f zuul",
+            "docker run -p 7200:8080 -m " + MEM_LIMIT_BIG + " -d --link mongo --link redis --name zuul zuul"
         ])
     }
 
@@ -46,13 +60,21 @@ module.exports = class Up {
         } else if (opts.cart) {
             return Up.cart()
 
+        } else if (opts.zuul) {
+            return Up.zuul()
+
+        } else if (opts.redis) {
+            return Up.redis()
+
         } else {
 
             return Promise.all([
                 Up.web(),
                 Up.db(),
+                Up.redis(),
                 Up.zoo(),
-                Up.cart()
+                Up.cart(),
+                Up.zuul()
             ])
 
         }
