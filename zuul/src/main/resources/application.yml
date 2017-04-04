@@ -8,7 +8,13 @@ zuul:
   routes:
     products:
       path: /products/**
-      url: http://products:8080/products
+      url: http://svc-product:8080/products
     cart:
       path: /cart/**
-      url: http://cart:8080/cart
+      url: http://svc-cart:8080/cart
+
+shopcart:
+  host:
+    mongo: mongo
+  database:
+    name: products

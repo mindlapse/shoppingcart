@@ -1,23 +1,21 @@
 package shopcart.cart.events;
 
-
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.context.ApplicationEvent;
-import shopcart.cart.model.ShoppingCart;
 
-public class CartUpdatedEvent extends ApplicationEvent {
+public class CartRequestedEvent extends ApplicationEvent {
 
-    private ShoppingCart shoppingCart;
+    private String userId;
 
-    public CartUpdatedEvent(Object source, ShoppingCart shoppingCart) {
+    public CartRequestedEvent(Object source, String userId) {
         super(source);
-        this.shoppingCart = shoppingCart;
+        this.userId = userId;
     }
 
-    public ShoppingCart getShoppingCart() {
-        return shoppingCart;
+    public String getUserId() {
+        return userId;
     }
 
     @Override
@@ -34,5 +32,6 @@ public class CartUpdatedEvent extends ApplicationEvent {
     public String toString() {
         return ToStringBuilder.reflectionToString(this);
     }
+
 
 }

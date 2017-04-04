@@ -3,13 +3,26 @@ package shopcart.product.model;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 public class Product {
 
+    @Id
     private String id;
     private String name;
     private String image;
+    private Price price;
 
+    public Product() {}
+
+    public Product(String id, String name, String image, Price price) {
+        this.id = id;
+        this.name = name;
+        this.image = image;
+        this.price = price;
+    }
 
     public String getId() {
         return id;
@@ -33,6 +46,14 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public Price getPrice() {
+        return price;
+    }
+
+    public void setPrice(Price price) {
+        this.price = price;
     }
 
     @Override

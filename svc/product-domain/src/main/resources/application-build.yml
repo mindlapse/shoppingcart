@@ -1,0 +1,3 @@
+shopcart:
+  host:
+    mongo: localhost

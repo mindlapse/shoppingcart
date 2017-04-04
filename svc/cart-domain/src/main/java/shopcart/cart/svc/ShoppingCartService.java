@@ -6,4 +6,6 @@ public interface ShoppingCartService {
 
     void saveCart(ShoppingCart cart);
 
+    ShoppingCart fetchCart(String userId);
+
 }

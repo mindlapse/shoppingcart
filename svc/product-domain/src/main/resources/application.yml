@@ -2,4 +2,4 @@ shopcart:
   host:
     mongo: mongo
   database:
-    name: shoppingCart
+    name: products

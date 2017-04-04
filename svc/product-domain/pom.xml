@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>demo.shopcart</groupId>
-    <artifactId>msvc-cart</artifactId>
+    <artifactId>msvc-product</artifactId>
     <version>1.0.0</version>
 
     <parent>
@@ -14,12 +14,8 @@
         <version>1.5.2.RELEASE</version>
     </parent>
 
-    <properties>
-        <release-train>Ingalls-SR1</release-train>
-    </properties>
-
-
     <dependencies>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -36,40 +32,7 @@
             <version>3.5</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-pool2</artifactId>
-            <version>2.4.2</version>
-        </dependency>
-
-        <!-- Test scoped -->
-
-        <dependency>
-            <groupId>javax.inject</groupId>
-            <artifactId>javax.inject</artifactId>
-            <version>1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.springframework.data</groupId>
-                <artifactId>spring-data-releasetrain</artifactId>
-                <version>${release-train}</version>
-                <scope>import</scope>
-                <type>pom</type>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <build>
         <plugins>
@@ -79,4 +42,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

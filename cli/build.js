@@ -17,14 +17,21 @@ module.exports = class Build {
 
     static cart() {
         return inFolder("svc/cart-domain", () => exec([
-            "mvn clean package",
+            "mvn clean package -Dspring.profiles.active=build",
             "docker build -t svc-cart ."
+        ], {strict:true}))
+    }
+
+    static product() {
+        return inFolder("svc/product-domain", () => exec([
+            "mvn clean package -Dspring.profiles.active=build",
+            "docker build -t svc-product ."
         ], {strict:true}))
     }
 
     static zuul() {
         return inFolder("zuul", () => exec([
-            "mvn clean package",
+            "mvn clean package -Dspring.profiles.active=build",
             "docker build -t zuul ."
         ], {strict:true}))
     }
@@ -47,6 +54,9 @@ module.exports = class Build {
         } else if (opts.cart) {
             return Build.cart();
 
+        } else if (opts.product) {
+            return Build.product();
+
         } else if (opts.zuul) {
             return Build.zuul();
 
@@ -60,6 +70,7 @@ module.exports = class Build {
                 Build.db(),
                 Build.zoo(),
                 Build.cart(),
+                Build.product(),
                 Build.zuul(),
                 Build.redis()
             ])

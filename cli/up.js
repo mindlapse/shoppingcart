@@ -35,14 +35,26 @@ module.exports = class Up {
     static cart() {
         return exec([
             "docker rm -f svc-cart",
-            "docker run -p 7100:8080 -m " + MEM_LIMIT_BIG + " -d --link redis --name svc-cart svc-cart"
+            "docker run -p 7100:8080 -m " + MEM_LIMIT_BIG + " -d --link mongo --name svc-cart svc-cart"
+        ])
+    }
+
+    static product() {
+        return exec([
+            "docker rm -f svc-product",
+            "docker run -p 7101:8080 -m " + MEM_LIMIT_BIG + " -d --link mongo --name svc-product svc-product"
         ])
     }
 
     static zuul() {
         return exec([
             "docker rm -f zuul",
-            "docker run -p 7200:8080 -m " + MEM_LIMIT_BIG + " -d --link mongo --link redis --name zuul zuul"
+            "docker run -p 7200:8080 -m " + MEM_LIMIT_BIG + " -d " +
+                "--link mongo " +
+                "--link redis " +
+                "--link svc-cart " +
+                "--link svc-product " +
+                "--name zuul zuul"
         ])
     }
 
@@ -60,6 +72,9 @@ module.exports = class Up {
         } else if (opts.cart) {
             return Up.cart()
 
+        } else if (opts.product) {
+            return Up.product()
+
         } else if (opts.zuul) {
             return Up.zuul()
 
@@ -74,6 +89,7 @@ module.exports = class Up {
                 Up.redis(),
                 Up.zoo(),
                 Up.cart(),
+                Up.products(),
                 Up.zuul()
             ])
 

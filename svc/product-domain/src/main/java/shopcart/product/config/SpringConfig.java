@@ -1,15 +1,12 @@
-package shopcart.zuul.config;
+package shopcart.product.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 
 @Configuration
-@ComponentScan(basePackages = {
-    "shopcart.zuul.svc",
-    "shopcart.zuul.filter"
-})
 @Import(MongoConfig.class)
-public class ServiceConfig {
+@ComponentScan(basePackages = "shopcart.product.svc")
+public class SpringConfig {
 
 }
