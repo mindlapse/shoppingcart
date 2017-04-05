@@ -5,14 +5,7 @@ const MEM_LIMIT_BIG = "384m"
 
 module.exports = class Up {
 
-    static web() {
-        return exec([
-            "docker rm -f cart-web",
-            "docker run -p 7080:8080 -m " + MEM_LIMIT_SMALL + " -d --name cart-web cart-web"
-        ])
-    }
-
-    static db() {
+    static async db() {
         return exec([
            "docker rm -f mongo",
            "docker run -p 27017:27017 -m " + MEM_LIMIT_SMALL + " -d --name mongo mongo:3.4"
@@ -58,12 +51,19 @@ module.exports = class Up {
         ])
     }
 
-    static go(opts) {
+    static web() {
+        return exec([
+            "docker rm -f cart-web",
+            "docker run -p 8080:8080 -m " + MEM_LIMIT_SMALL + " -d " +
+                "--link zuul " +
+                "--volume c:/dev/cart/zuul/src/main/resources/static:/data/www " +
+                "--name cart-web cart-web"
+        ])
+    }
 
-        if (opts.web) {
-            return Up.web()
+    static async go(opts) {
 
-        } else if (opts.db) {
+        if (opts.db) {
             return Up.db()
 
         } else  if (opts.zoo) {
@@ -81,17 +81,25 @@ module.exports = class Up {
         } else if (opts.redis) {
             return Up.redis()
 
-        } else {
+        }  else if (opts.web) {
+            return Up.web()
 
-            return Promise.all([
-                Up.web(),
-                Up.db(),
-                Up.redis(),
-                Up.zoo(),
-                Up.cart(),
-                Up.products(),
-                Up.zuul()
-            ])
+        } else {
+            await Up.db()
+            await Up.redis()
+            await Up.zoo()
+            await Up.cart()
+            await Up.products()
+            await Up.zuul()
+
+//            return Promise.all([
+//                Up.db(),
+//                Up.redis(),
+//                Up.zoo(),
+//                Up.cart(),
+//                Up.products(),
+//                Up.zuul()
+//            ])
 
         }
     }

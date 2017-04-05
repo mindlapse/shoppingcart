@@ -3,10 +3,6 @@ const inFolder = require('in-folder')
 
 module.exports = class Build {
 
-    static web() {
-        return inFolder("webtier", () => exec("docker build -t cart-web ."))
-    }
-
     static db() {
         return exec("docker pull mongo:3.4")
     }
@@ -40,41 +36,43 @@ module.exports = class Build {
         return exec("docker pull redis:3.2.8-alpine")
     }
 
-    static go(opts) {
+    static web() {
+        return inFolder("web", () => exec([
+            "docker build -t cart-web ."
+        ], {strict:true}))
+    }
 
-        if (opts.web) {
-            return Build.web()
+    static async go(opts) {
 
-        } else  if (opts.db) {
-            return Build.db();
+        if (opts.db) {
+            return Build.db()
 
         } else if (opts.zoo) {
-            return Build.zoo();
+            return Build.zoo()
 
         } else if (opts.cart) {
-            return Build.cart();
+            return Build.cart()
 
         } else if (opts.product) {
-            return Build.product();
+            return Build.product()
 
         } else if (opts.zuul) {
-            return Build.zuul();
+            return Build.zuul()
 
         } else if (opts.redis) {
-            return Build.redis();
+            return Build.redis()
+
+        }  else if (opts.web) {
+            return Build.web()
 
         } else {
 
-            return Promise.all([
-                Build.web(),
-                Build.db(),
-                Build.zoo(),
-                Build.cart(),
-                Build.product(),
-                Build.zuul(),
-                Build.redis()
-            ])
-
+            await Build.db()
+            await Build.zoo()
+            await Build.cart()
+            await Build.product()
+            await Build.zuul()
+            await Build.redis()
         }
 
     }

@@ -12,11 +12,11 @@ import shopcart.zuul.config.SecurityConfig;
 @SpringBootApplication
 @EnableZuulProxy
 @Import({MongoConfig.class, RedisHttpSessionConfig.class, SecurityConfig.class})
-public class Application {
+public class Zuul {
 
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(Zuul.class, args);
     }
 
 
