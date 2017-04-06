@@ -9,18 +9,18 @@ export default ["$httpProvider", "$routeProvider", function($httpProvider, $rout
     }
     const cart = {
         templateUrl : './pages/cart.html',
-        controller : 'CartCtrl'
+        controller : 'CartCtrl as cartCtrl'
     }
     const products = {
         templateUrl : './pages/products.html',
-        controller : 'ProductCtrl'
+        controller : 'ProductCtrl as productCtrl'
     }
 
 
     $routeProvider
-        .when('/login', login)
-        .when('/cart', cart)
-        .when('/products', products)
-        .otherwise(products);
+        .when('/page/login', login)
+        .when('/page/cart', cart)
+        .when('/page/products', products)
+        .otherwise(cart);
 
 }]

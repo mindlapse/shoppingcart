@@ -1,7 +1,24 @@
-<div>
-    products
-    <button type="button" class="btn btn-primary">Primary</button>
+<script src="../js/svc/productSvc.js"></script>
+<div class="products">
 
 
+    <div class="row">
+
+        <div class="product-intro">Adventures</div>
+
+        <div class="col-md-4" ng-repeat="product in productCtrl.products">
+            <div class="panel panel-default">
+                <img class="panel-body product-view" src="images/{{product.image}}" />
+                <div class="panel-footer">
+                    <div class="panel-title">
+                        <span class="product-name">{{product.name}}</span>
+                        <!--<span class="product-price">${{product.price|number:2}}</span>-->
+                        <a ng-click="productCtrl.addToCart(product)" class="fa fa-cart-plus cart-add-icon"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </div>

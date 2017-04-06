@@ -4,15 +4,45 @@
         <title>ShopCart</title>
         <link href="styles.css" rel="stylesheet" />
     </head>
-    <body ng-controller="GroundCtrl as gc">
+    <body ng-controller="NavCtrl as navCtrl">
 
-        route
+        <div class="container">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand">WestWorld</a>
+                    </div>
 
-        <div ng-view></div>
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav">
+                            <li ng-class="navCtrl.getProductPageClass()"><a ng-click="navCtrl.loadProductPage()">Product List</a></li>
+                            <li ng-class="navCtrl.getCartPageClass()">
+                                <a ng-click="navCtrl.loadCartPage()">
+                                    <i class="fa fa-shopping-cart"></i>&nbsp;
+                                    Cart
+                                    <span class="cart-count">{{navCtrl.getCartCount()}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-right navbar-form">
+                            <li><button type="submit" class="btn btn-default">Logout</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+        </div>
 
 
-        <div ng-repeat="product in gc.products">
+        <div class="container-fluid shopcart-products">
 
+            <div ng-view></div>
         </div>
 
 

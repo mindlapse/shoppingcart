@@ -1,5 +1,6 @@
-export default ["$location", "CartSvc", function ($location, cartSvc) {
+export default ["$location", "CartSvc", "NavSvc", function ($location, cartSvc, navSvc) {
 
-    //console.log(this.products);
+    navSvc.setActivePage(navSvc.CART_PAGE);
 
+    console.log("In cart svc")
 }]

@@ -1,4 +1,4 @@
-export default ["$http", function ($http) {
+export default ["$http", "CartSvc", function ($http, cartSvc) {
 
     return {
 

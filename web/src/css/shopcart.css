@@ -1,0 +1,105 @@
+a[ng-click]{
+    cursor: pointer;
+}
+
+.navbar {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0e2949+0,3097ff+95 */
+    background: #0e2949; /* Old browsers */
+    background: -moz-linear-gradient(left,  #0e2949 0%, #3097ff 95%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left,  #0e2949 0%,#3097ff 95%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right,  #0e2949 0%,#3097ff 95%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e2949', endColorstr='#3097ff',GradientType=1 ); /* IE6-9 */
+}
+.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+    color:white;
+}
+
+.product-intro {
+    font-size:4em;
+    text-align:center;
+    margin:0 auto;
+    color:lightgray;
+    margin-bottom:1em;
+}
+
+.shopcart-products {
+    margin-top:6em;
+    width:85%;
+}
+
+.product {
+    display:flex;
+    flex-direction: row;
+    min-height:7em;
+}
+
+.product .view {
+    max-height: 5em;
+}
+
+.product .caption {
+
+}
+.product .caption .price {
+    flex-grow:1;
+}
+
+.product .caption .name {
+    flex-grow:1;
+}
+
+.panel {
+    max-height:20em;
+    margin:3em 2em;
+    box-shadow:3px 3px 4px 1px rgba(0,0,0,.25);
+}
+
+.panel-body {
+    padding:0;
+}
+
+.panel-footer {
+    background-color:white;
+    border-top:0px solid white;
+}
+
+.product-view {
+    width:100%;
+    height:80%;
+    border: solid darkgray;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    border-bottom-width: 0px;
+}
+
+.cart-add-icon {
+    position:relative;
+    right:0.2em;
+    float:right;
+    color:#799585;
+    font-size:1.8em;
+    top:-0.1em;
+    text-shadow:1px 1px 1px rgba(0, 0, 0, 0.23);
+    cursor:pointer;
+}
+
+
+.cart-add-icon:active{
+    color: #09ff72;
+    animation: rock 1.4s linear infinite;
+}
+
+.cart-add-icon:hover{
+    color: #00f1c2;
+    animation: rock 1.4s linear infinite;
+    text-decoration: none;
+
+}
+@keyframes rock {
+    from { transform:rotate(0deg) scale(2.5); }
+    25%  { transform:rotate(20deg) scale(2.75); }
+    50%  { transform:rotate(0deg) scale(3); }
+    75%  { transform:rotate(-20deg) scale(2.75); }
+    to   { transform:rotate(0deg) scale(2.5); }
+}

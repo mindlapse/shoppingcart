@@ -5,6 +5,8 @@ public class Price {
     private float lowestPrice;
     private boolean sale;
 
+    public Price() {}
+
     public Price(float lowestPrice) {
         this(lowestPrice, false);
     }
