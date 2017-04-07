@@ -1,10 +1,1 @@
-# shoppingcart
-Shopping Cart demo
-
-
-Dependencies:
-
-* Yarn
-* Docker
-* Maven
-* Java 8
+# Shopping Cart demo
