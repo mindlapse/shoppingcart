@@ -3,7 +3,7 @@ import interceptor from '../svc/requestInterceptor'
 export default ["$httpProvider", "$routeProvider", function($httpProvider, $routeProvider) {
 
     $httpProvider.interceptors.push(interceptor)
-
+    $httpProvider.defaults.headers.post['Content-Type'] = 'application/json'
     const login = {
         templateUrl : './pages/login.html'
     }
@@ -17,6 +17,7 @@ export default ["$httpProvider", "$routeProvider", function($httpProvider, $rout
     }
 
 
+    // Routing logic
     $routeProvider
         .when('/page/login', login)
         .when('/page/cart', cart)

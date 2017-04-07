@@ -27,8 +27,6 @@ app.
     controller("CartCtrl", cartCtrl).
     run([function() {
 
-
-        // console.log(productSvc.loadProducts());
-
+        // :)
 
     }]);

@@ -4,8 +4,6 @@ export default ["$location", "$q", function ( $location, $q ) {
         // optional method
         'response': function (response) {
             // do something on success
-            console.log("response")
-            console.log(response)
             return response;
         },
 
@@ -13,11 +11,9 @@ export default ["$location", "$q", function ( $location, $q ) {
         'responseError': function (rejection) {
             // do something on error
 
-            console.log("rejection")
-            console.log(rejection)
             if (rejection.status == 401) {
                 // $location.url("/login");
-                console.log("Do something")
+                // TODO handle authentication
             }
 
             return $q.reject(rejection);

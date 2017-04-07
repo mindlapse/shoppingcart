@@ -12,6 +12,10 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+    /**
+     * Get a list of the products
+     * @return A list of products
+     */
     @GetMapping(path = "/products")
     public Iterable<Product> getProducts() {
 

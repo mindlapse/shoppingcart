@@ -1,3 +1,48 @@
 <div>
-    Cart
+    <h1>Your Cart</h1>
+
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
+            <div class='panel panel-default' ng-repeat="cartItem in cartCtrl.cartItems">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <img class="cart-image" src="images/{{cartCtrl.getProduct(cartItem.productId).image}}" />
+                        </div>
+                        <div class="col-sm-6">
+                            <table class="quantity-widget">
+                                <tr>
+                                    <td><i ng-click="cartCtrl.addItem(cartItem.productId)" class="fa fa-plus-square"></i></td>
+                                    <td class="quantity">{{cartItem.quantity}}</td>
+                                    <td><i ng-click="cartCtrl.removeItem(cartItem.productId)"  class="fa fa-minus-square"></i></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-10 col-lg-8 col-xl-6">
+            <button class="btn btn-lg btn-success pull-right cart-submit" data-toggle="modal" data-target="#myModal">
+                Submit Order
+                &nbsp;<i class="fa fa-paypal"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h2 class="modal-title" id="myModalLabel">Order Confirmed!</h2>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg btn-success" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

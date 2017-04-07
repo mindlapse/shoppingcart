@@ -14,6 +14,25 @@ a[ng-click]{
     color:white;
 }
 
+.navbar-default .navbar-toggle .icon-bar {
+    background-color:white;
+}
+
+.navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    color:white;
+    background-color:rgba(255,255,255,0.25)
+}
+
+.navbar-default .navbar-nav>.active>a {
+    color:white;
+    background-color:rgba(0,0,0,0.35)
+}
+
+.navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+    color:white;
+    background-color:rgba(0,0,0,0.35)
+}
+
 .product-intro {
     font-size:4em;
     text-align:center;
@@ -48,13 +67,16 @@ a[ng-click]{
     flex-grow:1;
 }
 
-.panel {
+.product-panel {
     max-height:20em;
+}
+
+.panel {
     margin:3em 2em;
     box-shadow:3px 3px 4px 1px rgba(0,0,0,.25);
 }
 
-.panel-body {
+.product-panel-body {
     padding:0;
 }
 
@@ -94,8 +116,59 @@ a[ng-click]{
     color: #00f1c2;
     animation: rock 1.4s linear infinite;
     text-decoration: none;
-
 }
+
+.cart-image {
+    display:block;
+    max-height:20em;
+    width:100%;
+    height:100%;
+}
+
+.cart-submit {
+    margin:1.5em 1em;
+    font-size:2em;
+    box-shadow:3px 3px 4px 1px rgba(0,0,0,.25);
+}
+
+.quantity-widget {
+    color:gray;
+    text-align:center;
+    margin:3em auto;
+    -webkit-user-select: none; /* webkit (safari, chrome) browsers */
+    -moz-user-select: none; /* mozilla browsers */
+    -ms-user-select: none; /* IE10+ */
+}
+
+.quantity-widget td {
+    padding:.25em;
+}
+
+.quantity-widget .fa-plus-square {
+    font-size:6em;
+    color:green;
+    opacity:.5;
+}
+.quantity-widget .fa-plus-square:hover {
+    color:darkgreen;
+    cursor:pointer;
+}
+
+.quantity-widget .fa-minus-square {
+    font-size:6em;
+    color:red;
+    opacity:.5;
+}
+.quantity-widget .fa-minus-square:hover {
+    color:darkred;
+    cursor:pointer;
+}
+
+.quantity-widget .quantity {
+    font-size:6em;
+    margin:.5em;
+}
+
 @keyframes rock {
     from { transform:rotate(0deg) scale(2.5); }
     25%  { transform:rotate(20deg) scale(2.75); }

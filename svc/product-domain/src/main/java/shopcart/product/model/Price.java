@@ -1,5 +1,8 @@
 package shopcart.product.model;
 
+/**
+ * The price of a product
+ */
 public class Price {
 
     private float lowestPrice;

@@ -36,7 +36,7 @@ public class ProductServiceImpl implements ProductService {
             new Product("6", "Gander", "gander.jpg", new Price(180)),
             new Product("7", "Guinea Pig", "guineapig.jpg", new Price(120)),
             new Product("8", "Hedge Hog", "hedgehog.jpg", new Price(210)),
-            new Product("9", "Koala", "hedgehog.jpg", new Price(440)),
+            new Product("9", "Koala", "koala.jpg", new Price(440)),
             new Product("10", "Meerkat", "meerkat.jpg", new Price(440)),
             new Product("11", "Ostriches", "ostriches.jpg", new Price(2)),
             new Product("12", "Swan", "swan.jpg", new Price(2, true))

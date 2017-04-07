@@ -20,16 +20,22 @@ public class CartController {
     private ShoppingCartService shoppingCartService;
 
 
+    // Update the shopping cart
     @PostMapping(path = "/cart")
-    public void updateCart(ShoppingCart cart, @RequestHeader HttpHeaders headers) {
+    public void updateCart(@RequestBody ShoppingCart cart, @RequestHeader HttpHeaders headers) {
 
         String userId = headers.getFirst(USER);
         logger.info("POST /cart requested by {}", userId);
 
+        logger.info(cart.toString());
+
         cart.setUserId(userId);
         shoppingCartService.saveCart(cart);
+
     }
 
+
+    // Get the latest cart for a user
     @GetMapping(path = "/cart")
     public @ResponseBody ShoppingCart getCart(@RequestHeader HttpHeaders headers) {
 

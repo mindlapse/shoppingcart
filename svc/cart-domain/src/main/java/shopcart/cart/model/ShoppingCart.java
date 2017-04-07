@@ -10,6 +10,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
+/**
+ * A shopping cart
+ */
 @Document
 public class ShoppingCart {
 

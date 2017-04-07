@@ -1,16 +1,20 @@
 
 
-export default ["$location", "ProductSvc", "NavSvc", "CartSvc", function ($location, productSvc, navSvc, cartSvc) {
+export default ["$location", "ProductSvc", "NavSvc", "CartSvc", "$rootScope", function ($location, productSvc, navSvc, cartSvc, $rootScope) {
 
+    // Update the header to show the Product page as the current page.
     navSvc.setActivePage(navSvc.PRODUCT_PAGE);
 
     const self = this;
-    console.log("In productCtrl")
 
-    productSvc.loadProducts().then(results => {
-        self.products = results.data;
+    // Load the products from the server
+    productSvc.loadProducts().then((products) => {
+        $rootScope.$apply(function() {
+            self.products = products
+        })
     });
 
+    // Add an item to the cart
     this.addToCart = function(product) {
         cartSvc.addCartItem(product.id)
     }
