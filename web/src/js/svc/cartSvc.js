@@ -50,7 +50,7 @@ export default ["$http", function ($http) {
         downloadCart : function() {
             return $http.get("/cart").then(response => {
 
-                cartItems = response.data.cart;
+                cartItems = response.data.cart || [];
                 return cartItems;
             })
         }
